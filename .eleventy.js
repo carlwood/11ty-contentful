@@ -1,5 +1,6 @@
 const fs = require("fs");
 const filesize = require("file-size");
+const process = require('dotenv').config();
 
 module.exports = (function(eleventyConfig) {
 	eleventyConfig.addFilter("filesize", function(path) {
@@ -17,4 +18,6 @@ module.exports = (function(eleventyConfig) {
 		}
 		return "";
 	});
+
+	eleventyConfig.addLayoutAlias('post', 'layouts/post.njk');
 });
