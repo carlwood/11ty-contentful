@@ -1,6 +1,7 @@
 const fs = require("fs");
 const filesize = require("file-size");
 const process = require('dotenv').config();
+const markdownIt = require('markdown-it')
 
 module.exports = (function(eleventyConfig) {
 	eleventyConfig.addFilter("filesize", function(path) {
@@ -19,5 +20,11 @@ module.exports = (function(eleventyConfig) {
 		return "";
 	});
 
-	eleventyConfig.addLayoutAlias('post', 'layouts/post.njk');
+	eleventyConfig.addFilter('mdToHtml', function(value) {
+		let markdown = require('markdown-it')({
+			html: true
+		});
+		return markdown.render(value);
+	});
+	// eleventyConfig.addLayoutAlias('post', 'layouts/post.njk');
 });

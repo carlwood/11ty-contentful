@@ -1,13 +1,5 @@
 ---
-pagination:
-  data: posts
-  size: 1
-  alias: post
-  addAllPagesToCollections: true
-permalink: "{{ post.slug | slug }}/"
-eleventyNavigation:
-  key: Home
-  order: 1
+
 ---
 
 <!doctype html>
@@ -15,6 +7,11 @@ eleventyNavigation:
  <head>
   <meta charset="utf-8">
   <title>{{ siteTitle }}</title>
+  <!-- Todo: add styles -->
+  <style>
+  img { max-width: 100%; height: auto; }
+  .article { margin: 0 auto; max-width: 960px; padding: 0 16px;}
+  </style>
  </head>
  <body>
   <header>
@@ -37,7 +34,7 @@ eleventyNavigation:
     <h2>Blog posts</h2>
     <ul>
       {% for post in posts %}
-        <li><a href="/{{ post.slug | url }}">{{post.title}}</a></li>
+        <li><a href="/blog/{{ post.slug | url }}">{{post.title}}</a></li>
       {% endfor %}
     </ul>
     {{ content | safe }}

@@ -1,13 +1,22 @@
 ---
 layout: layouts/base.njk
+templateEngineOverride: njk,md
+htmlTemplateEngine: true
+markdownTemplateEngine: true
 ---
 
 <article class="article">
   <header>
-    <h1 class="page-heading">{{ post.title }}</h1>
     Slug: <code>{{ post.slug}}</code>
+    <img src="{{ post.heroImage.fields.file.url }}"
+      width="{{ post.heroImage.fields.file.details.image.width }}"
+      height="{{ post.heroImage.fields.file.details.image.height }}"
+      alt="{{ post.heroImage.fields.description }}"
+    >
+    <h1 class="page-heading">{{ post.title }}</h1>
+    <p>by {{ post.author.fields.name }} on {{ post.publishDate }}</p>
   </header>
   <div class="article__body">
-
+    {{ post.body | mdToHtml | safe }}
   </div>
 </article>

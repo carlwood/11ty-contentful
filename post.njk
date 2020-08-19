@@ -5,9 +5,9 @@ pagination:
   size: 1
   alias: post
   addAllPagesToCollections: true
-permalink: "{{ post.slug | slug }}/"
+permalink: "blog/{{ post.slug | slug }}/"
 eleventyNavigation:
-  key: Home
+  key: Post
   order: 1
 ---
 {{ content }}

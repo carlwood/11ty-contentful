@@ -12,6 +12,7 @@ module.exports = function() {
       post.fields.date= new Date(post.sys.updatedAt);
       return post.fields;
     });
+    console.log(post)
     return post;
   })
   .catch(console.error);
